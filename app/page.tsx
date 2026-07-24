@@ -1,9 +1,11 @@
+'use client'
 import Header from "@/components/header";
 import APropos from "@/components/sections/apropos";
 import Hero from "@/components/sections/hero";
 import Services from "@/components/sections/services";
 import Skills from "@/components/sections/skills";
 import Projects from "@/components/sections/projects";
+
 
 export default function HomePage() {
   return (

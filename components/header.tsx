@@ -20,13 +20,13 @@ export default function Header() {
   const { theme, setTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const mounted = useSyncExternalStore(
-    () => () => {},
+    () => () => { },
     () => true,
     () => false
   );
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b  backdrop-blur ">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
         <Link href="/" className="text-xl font-bold tracking-tight">
           Dian<span className="text-primary">'</span>s
