@@ -73,7 +73,7 @@ export default function Hero() {
           <div className="size-64 rounded-full p-1 sm:size-80">
             <div className="flex size-full items-center justify-center overflow-hidden rounded-full bg-background">
               <img
-                src="/images/4k_teal_nobg.png"
+                src="/images/4k_teal_nobg.webp"
                 alt="Diano ANDRIANTSALAMA"
                 className="size-full object-cover"
               />
