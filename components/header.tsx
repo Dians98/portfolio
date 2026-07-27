@@ -9,8 +9,9 @@ import { useSyncExternalStore, useState } from "react";
 const navLinks = [
   { label: "À propos", href: "#apropos" },
   { label: "Services", href: "#services" },
+  { label: "Parcours", href: "#parcours" },
   { label: "Compétences", href: "#skills" },
-  { label: "Formations", href: "#formations" },
+
   { label: "Certifications", href: "#certifications" },
   { label: "Projets", href: "#projects" },
   { label: "Contact", href: "#contact" },
