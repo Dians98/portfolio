@@ -59,7 +59,7 @@ export default function Hero() {
             </Button>
             <Button variant="outline" size="lg" className="cursor-pointer">
               <Link href="/#contact"
-                target="_blank"
+
                 rel="noopener noreferrer">
                 Me contacter
               </Link>
