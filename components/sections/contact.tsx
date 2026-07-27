@@ -41,7 +41,7 @@ export default function Contact() {
               Contact
             </p>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mt-1">
-              Besoin d&apos;aide ? <span className="text-primary">Contactez-nous !</span>
+              Besoin d&apos;aide ? <span className="text-primary">Contactez-moi !</span>
             </h2>
           </div>
 
