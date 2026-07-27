@@ -1,24 +1,42 @@
 import ChangelogContent from '@/components/shadcn-studio/blocks/timeline-component-05/timeline-component-05'
 import type { Release } from '@/components/shadcn-studio/blocks/timeline-component-05/timeline-component-05'
-import OdooContent from '@/components/sections/parcours-content/odoo'
-import FullstackContent from '@/components/sections/parcours-content/fullstack'
-import InfoContent from '@/components/sections/parcours-content/info'
+import AngeContent from '@/components/sections/parcours-content/ange'
+import AerowJuniorContent from '@/components/sections/parcours-content/aerow-junior'
+import AerowAnalystContent from '@/components/sections/parcours-content/aerow-analyst'
+import IwebrootContent from '@/components/sections/parcours-content/iwebroot'
+import BachelorContent from '@/components/sections/parcours-content/bachelor'
+import AceemContent from '@/components/sections/parcours-content/aceem'
 
 const parcours: Release[] = [
   {
-    version: '2025',
-    date: 'Formation Odoo Functional',
-    content: <OdooContent />,
+    version: '2023 - Present',
+    date: '',
+    content: <AngeContent />,
   },
   {
-    version: '2024',
-    date: 'Développement Full-Stack',
-    content: <FullstackContent />,
+    version: '2022 - 2023',
+    date: '',
+    content: <AerowJuniorContent />,
   },
   {
     version: '2022',
-    date: 'Bachelor Informatique',
-    content: <InfoContent />,
+    date: '',
+    content: <AerowAnalystContent />,
+  },
+  {
+    version: '2021',
+    date: '',
+    content: <BachelorContent />,
+  },
+  {
+    version: '2019',
+    date: '',
+    content: <AceemContent />,
+  },
+  {
+    version: '2019',
+    date: '',
+    content: <IwebrootContent />,
   },
 ]
 
@@ -29,7 +47,7 @@ export default function Parcours() {
         <ChangelogContent
           releases={parcours}
           title="Parcours"
-          subtitle="Mon parcours académique et professionnel"
+          subtitle="Académique et Professionnelle"
         />
       </div>
     </section>

@@ -18,13 +18,13 @@ const ChangelogContent = ({ releases, title, subtitle }: ChangelogContentProps) 
   return (
     <>
       <div className='mb-8 space-y-4 text-center md:mb-10 lg:mb-18'>
-        <h2 className='text-2xl font-semibold tracking-tight md:text-3xl lg:text-4xl'>{title ?? 'Changelog Origin Update'}</h2>
-        <p className='text-muted-foreground text-xl'>
+        <h2 className='text-2xl font-semibold tracking-tight md:text-3xl lg:text-4xl text-primary'>{title ?? 'Changelog Origin Update'}</h2>
+        <p className='text-foreground text-xl'>
           {subtitle ?? 'Discover what\'s been added, changed, fixed, improved, and updated in this release.'}
         </p>
       </div>
       {releases.map((release, index) => (
-        <div key={release.version} id={String(index + 1)} className='relative flex scroll-mt-18 justify-end gap-2'>
+        <div key={index + release.version} id={String(index + 1)} className='relative flex scroll-mt-18 justify-end gap-2'>
           <div className='sticky top-19 flex w-36 flex-col items-end gap-2 self-start pb-4 max-md:hidden'>
             <Badge className='flex size-6 w-auto justify-end rounded-sm text-sm font-medium'>{release.version}</Badge>
             <div className='text-muted-foreground text-right text-sm font-medium'>{release.date}</div>

@@ -1,4 +1,4 @@
-import { Code, Server, Wrench, Building2 } from "lucide-react"
+import { Code, Server, Wrench, Building2, Layers, ServerCog } from "lucide-react"
 import {
   Card,
   CardContent,
@@ -22,29 +22,27 @@ const skillCategories: SkillCategory[] = [
     icon: Code,
     title: "Frontend",
     skills: [
-      { name: "React", level: 90 },
-      { name: "Next.js", level: 85 },
-      { name: "TypeScript", level: 85 },
-      { name: "JavaScript", level: 90 },
-      { name: "Tailwind CSS", level: 90 },
+      { name: "Next.js", level: 75 },
+      { name: "JavaScript", level: 60 },
+      { name: "Tailwind CSS", level: 60 },
     ],
   },
   {
-    icon: Server,
+    icon: ServerCog,
     title: "Backend",
     skills: [
-      { name: "Node.js", level: 75 },
-      { name: "PostgreSQL", level: 70 },
-      { name: "Prisma", level: 75 },
-      { name: "Odoo", level: 70 },
+      { name: "Fast API", level: 75 },
+      { name: "PHP", level: 80 },
+      { name: "NodeJs", level: 60 },
     ],
   },
   {
-    icon: Wrench,
-    title: "Outils & Design",
+    icon: Layers,
+    title: "Autres",
     skills: [
-      { name: "Git", level: 80 },
-      { name: "Figma", level: 65 },
+      { name: "K2", level: 90 },
+      { name: "n8n", level: 75 },
+      { name: "Odoo", level: 60 },
     ],
   },
 ]
@@ -94,13 +92,13 @@ function CircularProgress({ name, level }: Skill) {
 export default function Skills() {
   return (
     <section id="skills" className="py-6 md:py-12">
-      <div className="flex flex-col gap-12">
-        <div className="flex flex-col gap-2">
-          <p className="text-sm font-semibold uppercase tracking-widest text-primary">
+      <div className="flex flex-col gap-12 ">
+        <div className="flex flex-col gap-2 text-center md:text-start">
+          <p className="text-sm font-semibold uppercase tracking-widest text-primary ">
             COMPÉTENCES
           </p>
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Mes technologies & outils
+          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl ">
+            Ma Stack Technique
           </h2>
         </div>
 

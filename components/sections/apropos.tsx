@@ -4,7 +4,7 @@ export default function APropos() {
     return (
         <section id="apropos" className="py-6 md:py-12">
             <div className="grid grid-cols-1 md:grid-cols-2 items-center">
-                <div className="flex flex-col gap-1">
+                <div className="flex flex-col gap-1 items-center md:items-start">
                     <h1 className="text-primary font-medium"> A PROPOS</h1>
                     <h1 className="text-foreground font-bold sm:text-3xl md:text-4xl lg:text-4xl">Qui suis-je ?</h1>
                     <p className="my-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis dolorem debitis ea ex animi accusantium, velit quidem laboriosam odit natus veniam facilis dolore possimus modi inventore nisi labore sit commodi!</p>

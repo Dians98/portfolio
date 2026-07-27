@@ -14,7 +14,7 @@ const navLinks = [
 
   { label: "Certifications", href: "#certifications" },
   { label: "Projets", href: "#projects" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contactez-moi", href: "#contact" },
 ];
 
 export default function Header() {
@@ -33,17 +33,19 @@ export default function Header() {
           Dian<span className="text-primary">'</span>s
         </Link>
 
-        {/* Desktop nav */}
+
         <nav className="hidden items-center gap-6 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              href={link.href}
-              className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) =>
+            link.label !== "Contactez-moi" ? (
+              <Link key={link.href} href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground ">
+                {link.label}
+              </Link>
+            ) : (
+              <Button className="cursor-pointer text-primary-foreground bg-primary">
+                {link.label}
+              </Button>
+            )
+          )}
         </nav>
 
         <div className="flex items-center gap-2">

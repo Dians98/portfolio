@@ -45,7 +45,7 @@ export default function Services() {
   return (
     <section id="services" className="py-6 md:py-12">
 
-      <div className="flex flex-col gap-1 items-end">
+      <div className="flex flex-col gap-1 items-center md:items-end">
         <h1 className="text-primary font-medium">SERVICES</h1>
         <h1 className="text-foreground font-bold sm:text-3xl md:text-4xl lg:text-4xl">Ce que je propose</h1>
         <div className="grid grid-cols-1 md:grid-cols-4 w-full gap-4 my-4">
