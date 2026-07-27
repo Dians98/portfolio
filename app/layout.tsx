@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
-import { Satisfy } from "next/font/google";
+import { Pacifico } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const satisfy = Satisfy({ subsets: ["latin"], weight: "400", display: "swap", variable: "--font-satisfy" });
+const pacifico = Pacifico({ subsets: ["latin"], weight: "400", display: "swap", variable: "--font-pacifico" });
 
 export const metadata: Metadata = {
-  title: "Portfolio",
+  title: "Dian's Portfolio",
   description: "Portfolio personnel",
 };
 
@@ -19,7 +19,7 @@ export default function RootLayout({
     <html
       lang="fr"
       suppressHydrationWarning
-      className={`h-full antialiased ${satisfy.variable}`}
+      className={`h-full antialiased ${pacifico.variable}`}
     >
       <body className="min-h-full flex flex-col overflow-x-hidden">
         <ThemeProvider
