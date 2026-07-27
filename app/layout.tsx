@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
+import { Satisfy } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+
+const satisfy = Satisfy({ subsets: ["latin"], weight: "400", display: "swap", variable: "--font-satisfy" });
 
 export const metadata: Metadata = {
   title: "Portfolio",
@@ -16,7 +19,7 @@ export default function RootLayout({
     <html
       lang="fr"
       suppressHydrationWarning
-      className={`h-full antialiased`}
+      className={`h-full antialiased ${satisfy.variable}`}
     >
       <body className="min-h-full flex flex-col overflow-x-hidden">
         <ThemeProvider

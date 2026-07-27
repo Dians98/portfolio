@@ -28,7 +28,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b  backdrop-blur ">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
-        <Link href="/" className="text-xl font-bold tracking-tight">
+        <Link href="/" className="text-xl font-bold tracking-tight" style={{ fontFamily: "var(--font-satisfy)" }}>
           Dian<span className="text-primary">'</span>s
         </Link>
 
