@@ -11,9 +11,8 @@ const navLinks = [
   { label: "Services", href: "#services" },
   { label: "Parcours", href: "#parcours" },
   { label: "Compétences", href: "#skills" },
-
-  { label: "Certifications", href: "#certifications" },
-  { label: "Projets", href: "#projects" },
+  // { label: "Certifications", href: "#certifications" },
+  // { label: "Réalisations", href: "#projects" },
   { label: "Contactez-moi", href: "#contact" },
 ];
 
@@ -42,7 +41,10 @@ export default function Header() {
               </Link>
             ) : (
               <Button className="cursor-pointer text-primary-foreground bg-primary">
-                {link.label}
+                <Link href="/#contact" >
+                  {link.label}
+                </Link>
+
               </Button>
             )
           )}

@@ -6,6 +6,8 @@ import Services from "@/components/sections/services";
 import Skills from "@/components/sections/skills";
 import Parcours from "@/components/sections/parcours";
 import Projects from "@/components/sections/projects";
+import Contact from "@/components/sections/contact";
+import Footer from "@/components/footer";
 
 
 export default function HomePage() {
@@ -19,7 +21,9 @@ export default function HomePage() {
         <Parcours />
         <Skills />
         <Projects />
+        <Contact />
       </main>
+      <Footer />
     </>
   );
 }

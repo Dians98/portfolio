@@ -117,6 +117,12 @@
   --sidebar-ring: oklch(0.6938 0.108 272.04);
 }
 
+@keyframes border-spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
 @keyframes pop-in {
   0% { transform: scale(0) translateY(10px); opacity: 0; }
   60% { transform: scale(1.1) translateY(-2px); opacity: 1; }

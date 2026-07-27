@@ -5,36 +5,36 @@ import { X, ExternalLink, GitBranch } from "lucide-react";
 
 const projects = [
   {
-    title: "Projet 1",
+    title: "E-Commerce Dashboard",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum quod quibusdam.",
+      "Interface d'administration pour la gestion de boutiques en ligne avec analytics en temps réel et gestion des commandes.",
     stack: ["React", "TypeScript", "Tailwind"],
     image: null,
     gitUrl: "#",
     videoUrl: "#",
   },
   {
-    title: "Projet 2",
+    title: "Portfolio CMS",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum quod quibusdam.",
+      "Plateforme de gestion de contenu avec authentification, base de données PostgreSQL et déploiement automatisé.",
     stack: ["Next.js", "Prisma", "PostgreSQL"],
     image: null,
     gitUrl: "#",
     videoUrl: "#",
   },
   {
-    title: "Projet 3",
+    title: "Application de Gestion de Tâches",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum quod quibusdam.",
+      "Outil collaboratif de suivi de projets avec notifications en temps réel et synchronisation multi-appareils.",
     stack: ["React", "Node.js", "MongoDB"],
     image: null,
     gitUrl: "#",
     videoUrl: "#",
   },
   {
-    title: "Projet 4",
+    title: "Site Vitrine Moderne",
     description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam voluptatum quod quibusdam.",
+      "Site statique haute performance avec génération de pages optimisée pour le référencement naturel.",
     stack: ["Next.js", "TypeScript", "Tailwind"],
     image: null,
     gitUrl: "#",
