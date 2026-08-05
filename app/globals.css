@@ -143,10 +143,44 @@
   }
   html {
     @apply font-sans;
-    font-size: 22px;
+    font-size: 19px;
     scroll-behavior: smooth;
   }
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
+  }
+}
+
+/* Terminal motifs (hero) */
+.terminal-grid {
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+.terminal-grid-fade {
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 35%, transparent 78%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 35%, transparent 78%);
+}
+
+.terminal-caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.1em;
+  margin-left: 0.15em;
+  vertical-align: text-bottom;
+  background-color: var(--primary);
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+@keyframes caret-blink {
+  0%, 55% { opacity: 1; }
+  56%, 100% { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .terminal-caret {
+    animation: none;
   }
 }

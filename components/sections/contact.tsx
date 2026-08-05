@@ -4,6 +4,9 @@ import { useState, FormEvent } from "react"
 import { MapPin, Phone, Mail, Send, Loader2, CheckCircle, AlertCircle } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
+const inputClasses =
+  "w-full rounded-xl border border-border bg-background px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
+
 export default function Contact() {
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle")
 
@@ -61,79 +64,89 @@ export default function Contact() {
           </div>
         </div>
 
-        <div className="relative overflow-hidden rounded-2xl">
-          <div
-            className="pointer-events-none absolute inset-[-50%] animate-[border-spin_3s_linear_infinite]"
-            style={{
-              background: "conic-gradient(from 0deg, transparent 70deg, var(--color-primary) 120deg, transparent 170deg)",
-            }}
-          />
-          <div className="relative m-[1.5px] rounded-2xl bg-background p-6 md:p-8">
-
-            <form className="flex flex-col gap-5" onSubmit={handleSubmit}>
-              <div>
-                <input
-                  name="name"
-                  type="text"
-                  placeholder="Entrez votre nom..."
-                  required
-                  className="w-full rounded-xl border bg-background px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
-                />
-              </div>
-
-              <div>
-                <input
-                  name="email"
-                  type="email"
-                  placeholder="Entrez votre email..."
-                  required
-                  className="w-full rounded-xl border bg-background px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
-                />
-              </div>
-
-              <div>
-                <input
-                  name="subject"
-                  type="text"
-                  placeholder="Votre sujet"
-                  className="w-full rounded-xl border bg-background px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
-                />
-              </div>
-
-              <div>
-                <textarea
-                  name="message"
-                  rows={5}
-                  placeholder="Votre message"
-                  required
-                  className="w-full resize-none rounded-xl border bg-background px-4 py-3 text-sm outline-none transition-colors placeholder:text-muted-foreground focus:border-primary/50 focus:ring-1 focus:ring-primary/20"
-                />
-              </div>
-
-              <Button type="submit" disabled={status === "loading"} className="w-full cursor-pointer gap-2">
-                {status === "loading" ? (
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                ) : (
-                  <Send className="h-4 w-4" />
-                )}
-                {status === "loading" ? "Envoi en cours..." : "Envoyer le message"}
-              </Button>
-
-              {status === "success" && (
-                <div className="flex items-center gap-2 text-sm text-green-600">
-                  <CheckCircle className="h-4 w-4" />
-                  Message envoyé avec succès !
-                </div>
-              )}
-
-              {status === "error" && (
-                <div className="flex items-center  gap-2 text-sm text-red-500">
-                  <AlertCircle className="h-4 w-4" />
-                  Une erreur est survenue. Réessayez plus tard.
-                </div>
-              )}
-            </form>
+        <div className="overflow-hidden rounded-2xl border border-border bg-card">
+          <div className="border-b border-border bg-muted/40 px-6 py-3 font-mono text-xs text-muted-foreground">
+            $ send_message.sh --to diano
           </div>
+          <form className="flex flex-col gap-5 p-6 md:p-8" onSubmit={handleSubmit}>
+            <div className="flex flex-col gap-2">
+              <label htmlFor="contact-name" className="text-sm font-medium">
+                Nom
+              </label>
+              <input
+                id="contact-name"
+                name="name"
+                type="text"
+                placeholder="Votre nom"
+                required
+                className={inputClasses}
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label htmlFor="contact-email" className="text-sm font-medium">
+                Email
+              </label>
+              <input
+                id="contact-email"
+                name="email"
+                type="email"
+                placeholder="vous@exemple.com"
+                required
+                className={inputClasses}
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label htmlFor="contact-subject" className="text-sm font-medium">
+                Sujet
+              </label>
+              <input
+                id="contact-subject"
+                name="subject"
+                type="text"
+                placeholder="Le sujet de votre message"
+                className={inputClasses}
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label htmlFor="contact-message" className="text-sm font-medium">
+                Message
+              </label>
+              <textarea
+                id="contact-message"
+                name="message"
+                rows={5}
+                placeholder="Votre message"
+                required
+                className={`${inputClasses} resize-none`}
+              />
+            </div>
+
+            <Button type="submit" disabled={status === "loading"} className="w-full cursor-pointer gap-2">
+              {status === "loading" ? (
+                <Loader2 className="h-4 w-4 animate-spin" />
+              ) : (
+                <Send className="h-4 w-4" />
+              )}
+              {status === "loading" ? "Envoi en cours..." : "Envoyer le message"}
+            </Button>
+
+            {status === "success" && (
+              <p className="flex items-center gap-2 text-sm text-emerald-600 dark:text-emerald-400">
+                <CheckCircle className="h-4 w-4" />
+                Message envoyé avec succès !
+              </p>
+            )}
+
+            {status === "error" && (
+              <p className="flex items-center gap-2 text-sm text-red-500">
+                <AlertCircle className="h-4 w-4" />
+                Une erreur est survenue. Réessayez plus tard.
+              </p>
+            )}
+          </form>
         </div>
       </div>
     </section>

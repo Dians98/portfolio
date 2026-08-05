@@ -1,10 +1,34 @@
+"use client";
+
 import Link from "next/link";
+import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useSyncExternalStore } from "react";
+
+const COMMAND = "$ whoami";
+const OUTPUT = "diano.andriantsalama";
+
+let mediaQuery: MediaQueryList | null = null;
+function getMediaQuery() {
+  if (typeof window === "undefined") return null;
+  mediaQuery ??= window.matchMedia("(prefers-reduced-motion: reduce)");
+  return mediaQuery;
+}
+
+function subscribeReducedMotion(callback: () => void) {
+  const mq = getMediaQuery();
+  if (!mq) return () => { };
+  mq.addEventListener("change", callback);
+  return () => mq.removeEventListener("change", callback);
+}
+
+function getReducedMotionSnapshot() {
+  return getMediaQuery()?.matches ?? false;
+}
 
 export default function Hero() {
   const [text, setText] = useState("");
-  const fullText = "👋 Salut, je suis...";
+  const fullText = "$ whoami → ...";
   const speed = 60;
 
   useEffect(() => {
@@ -21,11 +45,11 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex min-h-[calc(100vh-4rem)] w-full items-center justify-center overflow-x-hidden py-16 md:py-0"
+      className="relative flex min-h-[calc(100dvh-4rem)] w-full items-center justify-center overflow-x-hidden py-16 md:py-0"
     >
       <div
         aria-hidden
-        className="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_center,oklch(0.6_0.14_195_/_0.15),transparent_60%)]"
+        className="terminal-grid terminal-grid-fade pointer-events-none absolute inset-0 -z-10 opacity-60 dark:opacity-40"
       />
 
       <div className="flex w-full flex-col items-center gap-10 md:flex-row md:items-center">
@@ -71,11 +95,14 @@ export default function Hero() {
         {/* --- DROITE : Image / Avatar --- */}
         <div className="shrink-0">
           <div className="size-64 rounded-full p-1 sm:size-80">
-            <div className="flex size-full items-center justify-center overflow-hidden rounded-full bg-background">
-              <img
+            <div className="relative flex size-full items-center justify-center overflow-hidden rounded-full border border-border bg-background">
+              <Image
                 src="/images/4k_teal_nobg.webp"
                 alt="Diano ANDRIANTSALAMA"
-                className="size-full object-cover"
+                fill
+                priority
+                sizes="(min-width: 640px) 20rem, 16rem"
+                className="object-cover"
               />
             </div>
           </div>

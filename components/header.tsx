@@ -29,7 +29,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b  backdrop-blur ">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
         <Link href="/" className="text-xl font-bold tracking-tight" style={{ fontFamily: "var(--font-sora)" }}>
-          Dian<span className="text-primary">'</span>s
+          Dian<span className="text-primary">&apos;</span>s
         </Link>
 
 
@@ -40,7 +40,7 @@ export default function Header() {
                 {link.label}
               </Link>
             ) : (
-              <Button className="cursor-pointer text-primary-foreground bg-primary">
+              <Button key={link.href} className="cursor-pointer text-primary-foreground bg-primary">
                 <Link href="/#contact" >
                   {link.label}
                 </Link>
