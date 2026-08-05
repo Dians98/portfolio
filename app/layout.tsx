@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
-import { Pacifico } from "next/font/google";
+import { Sora, Manrope } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
-const pacifico = Pacifico({ subsets: ["latin"], weight: "400", display: "swap", variable: "--font-pacifico" });
+const sora = Sora({ subsets: ["latin"], variable: "--font-sora", display: "swap" });
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
 
 export const metadata: Metadata = {
   title: "Dian's Portfolio",
@@ -19,7 +20,7 @@ export default function RootLayout({
     <html
       lang="fr"
       suppressHydrationWarning
-      className={`h-full antialiased ${pacifico.variable}`}
+      className={`h-full antialiased ${sora.variable} ${manrope.variable}`}
     >
       <body className="min-h-full flex flex-col overflow-x-hidden">
         <ThemeProvider
