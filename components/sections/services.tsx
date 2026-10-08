@@ -19,7 +19,7 @@ const services: Service[] = [
     icon: Code,
     title: "Applications web full-stack",
     description:
-      "Interface en React, Next.js et TypeScript, back-end en Node.js avec une base PostgreSQL.",
+      "Interface en React, Next.js et TypeScript, back-end en Node.js ou FastAPI avec une base PostgreSQL.",
   },
   {
     icon: Smartphone,
