@@ -67,7 +67,7 @@ export default function APropos() {
 
 
                     <div className="flex flex-col items-center justify-center p-6 rounded-2xl border  text-center hover:border-primary/50 transition-colors">
-                        <span className="text-3xl lg:text-4xl font-bold text-primary"><StatNumber end={23} /></span>
+                        <span className="text-3xl lg:text-4xl font-bold text-primary"><StatNumber end={15} /></span>
                         <span className="text-sm text-slate-400 mt-1">Technologies</span>
                     </div>
 
