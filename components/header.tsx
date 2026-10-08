@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useTheme } from "next-themes";
 import { Sun, Moon, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Logo } from "@/components/logo";
 import { useSyncExternalStore, useState } from "react";
 
 const navLinks = [
@@ -30,8 +31,8 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b  backdrop-blur ">
       <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-4">
-        <Link href="/" className="text-xl font-bold tracking-tight" style={{ fontFamily: "var(--font-sora)" }}>
-          Dian<span className="text-primary">&apos;</span>s
+        <Link href="/" className="text-foreground">
+          <Logo className="h-[1.15rem] w-auto" />
         </Link>
 
 
