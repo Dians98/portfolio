@@ -11,7 +11,7 @@ Roadmap et avancement : voir `STATUS.md`.
 - **Auth** : NextAuth.js **v4** — email/password (Credentials) + OAuth (GitHub, Google), session JWT, `@auth/prisma-adapter`
 - **UI** : Tailwind CSS v4 (thème dans `app/globals.css`, pas de `tailwind.config`) + shadcn/ui style `base-nova` (primitives **Base UI** `@base-ui/react`, pas Radix)
 - **Animations** : `motion` (`motion/react`), `react-countup`
-- **Email** : nodemailer (formulaire de contact)
+- **Email** : Resend (formulaire de contact, `lib/mail.ts`)
 - **Upload** : local dans `/public/uploads` via API Next.js — ⚠️ non persistant sur Vercel, prévoir Vercel Blob / S3 en production
 - **Déploiement** : Vercel (auto depuis GitHub)
 

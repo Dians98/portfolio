@@ -36,7 +36,7 @@ Les versions installées sont récentes et leurs APIs diffèrent de la plupart d
 - **Monopage** : [app/page.tsx](app/page.tsx) (client component) assemble `Header` + les sections de `components/sections/` + `Footer`. Chaque section est un `<section id="...">` ; la nav du header pointe sur ces ancres (`#apropos`, `#services`, `#parcours`, `#skills`, `#contact`). Ajouter une section = créer le composant, l'insérer dans `page.tsx`, ajouter le lien dans `navLinks` de [components/header.tsx](components/header.tsx).
 - **Contenu en dur** : pour l'instant tout le contenu (services, compétences, stats, projets) est codé en constantes dans chaque composant de section, pas encore lu depuis la BDD.
 - **Parcours (timeline)** : [components/sections/parcours.tsx](components/sections/parcours.tsx) réutilise le bloc shadcn-studio `components/shadcn-studio/blocks/timeline-component-05/` (type `Release` : `version`, `date`, `content: ReactNode`). Le contenu de chaque étape est un composant dans `components/sections/parcours-content/`. La route `app/timeline-component-05/` est la page démo du bloc, pas une vraie page du site.
-- **Contact** : le formulaire ([components/sections/contact.tsx](components/sections/contact.tsx)) POST en JSON sur [app/api/contact/route.ts](app/api/contact/route.ts), qui envoie un email via nodemailer ([lib/mail.ts](lib/mail.ts), SMTP en `secure: true`). Rien n'est stocké en BDD.
+- **Contact** : le formulaire ([components/sections/contact.tsx](components/sections/contact.tsx)) POST en JSON sur [app/api/contact/route.ts](app/api/contact/route.ts), qui valide les champs puis envoie un email via **Resend** ([lib/mail.ts](lib/mail.ts)) à `CONTACT_TO` (diano.faniry@gmail.com), avec `replyTo` = l'email du visiteur et les champs échappés dans le HTML. Expéditeur par défaut `onboarding@resend.dev`, qui ne livre qu'à l'adresse du compte Resend : en production, `RESEND_FROM` doit utiliser un domaine vérifié dans Resend. Le SDK renvoie `{ data, error }` (pas d'exception). Rien n'est stocké en BDD.
 - **Auth / admin** : `middleware.ts` protège `/admin/:path*` via `withAuth` ; provider Credentials dont `authorize()` renvoie toujours `null` (aucune connexion possible pour l'instant) ; page de login prévue sur `/admin/login` (inexistante).
 - **Dark mode** : `ThemeProvider` (next-themes, `attribute="class"`) dans le root layout. Le toggle du header utilise `useSyncExternalStore` comme garde « mounted » pour éviter le mismatch d'hydratation.
 - **Typo** : Sora (titres, `--font-heading`) et Manrope (texte, `--font-sans`) via `next/font`. `html { font-size: 19px }` — les unités `rem` sont donc plus grandes que d'habitude.
@@ -50,7 +50,7 @@ Les versions installées sont récentes et leurs APIs diffèrent de la plupart d
 
 ## Variables d'environnement (`.env`)
 
-`DATABASE_URL`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`, `AUTH_GITHUB_ID/SECRET`, `AUTH_GOOGLE_ID/SECRET`, `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS`, `SMTP_FROM`, `CONTACT_TO`.
+`DATABASE_URL`, `NEXTAUTH_SECRET`, `NEXTAUTH_URL`, `AUTH_GITHUB_ID/SECRET`, `AUTH_GOOGLE_ID/SECRET`, `RESEND_API_KEY`, `RESEND_FROM` (optionnel), `CONTACT_TO`.
 
 ## Conventions
 

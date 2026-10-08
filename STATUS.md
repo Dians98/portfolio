@@ -49,9 +49,9 @@ La **partie publique est bien avancée** (Hero, À propos, Services, Parcours, C
 | Projets (grille + filtre + modal) | 🟡 | Données factices + state prêts, mais le composant **rend un fragment vide** |
 | Certifications | ❌ | |
 | CV download | ❌ | |
-| Contact (formulaire) | ✅ | Envoi par email (nodemailer), pas de stockage `Message` en BDD |
+| Contact (formulaire) | ✅ | Envoi par email via Resend vers diano.faniry@gmail.com, pas de stockage `Message` en BDD |
 | Footer | ✅ | GitHub + LinkedIn |
-| `app/api/contact/route.ts` | 🟡 | Fonctionne mais : pas de validation Zod, pas d'échappement HTML de `name`/`message` dans l'email (injection HTML), pas d'anti-spam / rate limit |
+| `app/api/contact/route.ts` | 🟡 | Validation manuelle (types, longueurs, format email) et HTML échappé dans l'email. Reste : pas de Zod, pas d'anti-spam / rate limit |
 | Enregistrer les messages de contact en BDD (`Message`) | ❌ | Nécessaire pour la boîte de réception admin |
 | Brancher les sections sur la BDD (Projets, Certifications, SiteSetting) | ❌ | |
 
@@ -77,7 +77,7 @@ La **partie publique est bien avancée** (Hero, À propos, Services, Parcours, C
 | SEO / Open Graph | 🟡 | `metadata` statique minimal |
 | Tracking visiteurs | ❌ | |
 | Intégrer l'upload dans les formulaires admin (Projets, Certifications, CV) | ❌ | |
-| Déploiement Vercel | ❓ | Variables d'env : PostgreSQL, SMTP, NextAuth, OAuth |
+| Déploiement Vercel | ❓ | Variables d'env : PostgreSQL, Resend (`RESEND_API_KEY`, `RESEND_FROM`), NextAuth, OAuth |
 
 ## Nettoyage à prévoir
 
