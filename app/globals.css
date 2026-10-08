@@ -151,26 +151,51 @@
   }
 }
 
-/* Terminal motifs (hero) */
-.terminal-grid {
-  background-image:
-    linear-gradient(to right, var(--border) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
-  background-size: 56px 56px;
+/* Fond terminal du hero : encre très atténuée, jamais en concurrence avec le texte */
+:root {
+  --log-ink: oklch(0.1218 0.014 262.51 / 0.2);
+  --log-prompt: oklch(0.55 0.14 195 / 0.45);
+  --log-cmd: oklch(0.1218 0.014 262.51 / 0.34);
 }
 
-.terminal-grid-fade {
-  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 35%, transparent 78%);
-  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 35%, transparent 78%);
+.dark {
+  --log-ink: oklch(0.9401 0.011 269.55 / 0.13);
+  --log-prompt: oklch(0.72 0.13 195 / 0.42);
+  --log-cmd: oklch(0.9401 0.011 269.55 / 0.26);
 }
+
+/* Tablette (md → xl) : halo centré sur la photo, qui s'efface avant la colonne de texte */
+.terminal-log {
+  color: var(--log-ink);
+  -webkit-mask-image: radial-gradient(ellipse 44% 34% at 50% 50%, black 35%, transparent 100%);
+  mask-image: radial-gradient(ellipse 44% 34% at 50% 50%, black 35%, transparent 100%);
+}
+
+/* Desktop (≥ xl) : 1 s'efface vers les bords, 2 fondu haut/bas, 3 s'atténue derrière le paragraphe et les boutons */
+@media (width >= 80rem) {
+  .terminal-log {
+    -webkit-mask-image:
+      radial-gradient(ellipse 65% 62% at 50% 52%, black 30%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, black 16%, black 84%, transparent 100%),
+      radial-gradient(ellipse 62% 20% at 10% 59%, rgb(0 0 0 / 0.12) 55%, black 100%);
+    -webkit-mask-composite: source-in, source-in;
+    mask-image:
+      radial-gradient(ellipse 65% 62% at 50% 52%, black 30%, transparent 100%),
+      linear-gradient(to bottom, transparent 0%, black 16%, black 84%, transparent 100%),
+      radial-gradient(ellipse 62% 20% at 10% 59%, rgb(0 0 0 / 0.12) 55%, black 100%);
+    mask-composite: intersect;
+  }
+}
+
+.terminal-log .log-prompt { color: var(--log-prompt); }
+.terminal-log .log-cmd { color: var(--log-cmd); }
 
 .terminal-caret {
   display: inline-block;
   width: 0.55em;
   height: 1.1em;
-  margin-left: 0.15em;
   vertical-align: text-bottom;
-  background-color: var(--primary);
+  background-color: var(--log-prompt);
   animation: caret-blink 1s steps(1) infinite;
 }
 

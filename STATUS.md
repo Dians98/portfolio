@@ -41,7 +41,7 @@ La **partie publique est bien avancée** (Hero, À propos, Services, Parcours, C
 | Section | État | Notes |
 |---|---|---|
 | Header (nav + toggle + menu mobile) | ✅ | Liens Certifications / Réalisations commentés |
-| Hero | ✅ | Effet terminal `$ whoami` + typewriter, photo webp |
+| Hero | ✅ | Effet terminal `$ whoami` + typewriter, photo webp ; fond = session shell animée (remplace la grille, derrière la photo en tablette, masqué sur mobile) |
 | À propos | ✅ | Stats animées (CountUp), chiffres en dur |
 | Services | ✅ | 4 cartes en dur |
 | Parcours (timeline) | ✅ | Ajouté hors PLAN, via bloc shadcn-studio |

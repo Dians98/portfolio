@@ -41,6 +41,7 @@ Les versions installées sont récentes et leurs APIs diffèrent de la plupart d
 - **Dark mode** : `ThemeProvider` (next-themes, `attribute="class"`) dans le root layout. Le toggle du header utilise `useSyncExternalStore` comme garde « mounted » pour éviter le mismatch d'hydratation.
 - **Typo** : Sora (titres, `--font-heading`) et Manrope (texte, `--font-sans`) via `next/font`. `html { font-size: 19px }` — les unités `rem` sont donc plus grandes que d'habitude.
 - **Animations** : `motion` (`motion/react`) et `react-countup`. Toujours respecter `useReducedMotion()` comme le font Hero et À propos.
+- **Fond du hero** : [components/sections/terminal-backdrop.tsx](components/sections/terminal-backdrop.tsx), session shell décorative (`aria-hidden`) qui tape des commandes en boucle, en JetBrains Mono (`--font-jetbrains-mono`, réservée à ce fond). Masquée sur mobile (< `md`), derrière la photo en tablette, dans le creux nom/photo à partir de `xl` (les breakpoints en rem suivent les 16 px du navigateur, pas le `html` à 19 px), en pause hors écran, figée si motion réduite. Couleurs (`--log-*`) et masques (`.terminal-log`) dans globals.css. Maquette d'origine : `prototype/hero/`.
 
 ## Agents et design
 
