@@ -17,27 +17,27 @@ interface Service {
 const services: Service[] = [
   {
     icon: Code,
-    title: "Applications Web Full-Stack",
+    title: "Applications web full-stack",
     description:
-      "Applications web complètes, du front-end à la base de données. React, Next.js, TypeScript pour l'interface, Node.js et PostgreSQL pour le back-end.",
+      "Interface en React, Next.js et TypeScript, back-end en Node.js avec une base PostgreSQL.",
   },
   {
     icon: Smartphone,
-    title: "Applications Mobiles & PWA",
+    title: "Applications mobiles et PWA",
     description:
-      "Développement d'applications mobiles réactives et PWA. Interfaces fluides, ergonomiques et adaptées à tous les écrans (iOS & Android).",
+      "Applications React Native et PWA pour iOS et Android.",
   },
   {
     icon: Workflow, // Importe l'icône Workflow, Zap ou Cpu depuis lucide-react
-    title: "Automatisation & Workflows (n8n)",
+    title: "Automatisation et workflows (n8n)",
     description:
-      "Gain de temps et productivité : connexion de vos outils (CRM, formulaires, bases de données) et automatisation de vos tâches répétitives via n8n.",
+      "Je connecte vos outils (CRM, formulaires, bases de données) avec n8n pour automatiser les tâches répétitives.",
   },
   {
     icon: Building2,
-    title: "Configuration Odoo & ERP",
+    title: "Configuration Odoo et ERP",
     description:
-      "Paramétrage et optimisation d'Odoo pour vos processus métier : CRM, comptabilité, inventaire, vente. Intégration avec vos outils existants sans développement.",
+      "Paramétrage d'Odoo pour vos processus : CRM, comptabilité, inventaire et vente, avec intégration à vos outils existants.",
   },
 ];
 

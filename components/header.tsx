@@ -13,7 +13,7 @@ const navLinks = [
   { label: "Compétences", href: "#skills" },
   // { label: "Certifications", href: "#certifications" },
   // { label: "Réalisations", href: "#projects" },
-  { label: "Contactez-moi", href: "#contact" },
+  { label: "Me contacter", href: "#contact" },
 ];
 
 export default function Header() {
@@ -37,7 +37,7 @@ export default function Header() {
 
         <nav className="hidden items-center gap-6 md:flex">
           {navLinks.map((link) =>
-            link.label !== "Contactez-moi" ? (
+            link.href !== "#contact" ? (
               <Link key={link.href} href={link.href} className="text-sm text-muted-foreground transition-colors hover:text-foreground ">
                 {link.label}
               </Link>

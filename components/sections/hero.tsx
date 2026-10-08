@@ -73,8 +73,8 @@ export default function Hero() {
           </p>
 
           <p className="mt-4 max-w-lg leading-relaxed text-muted-foreground">
-            Je conçois des applications web &amp; mobiles et solution
-            d&apos;automatisations sur mesure adaptées à vos besoins.
+            Je développe des applications web et mobiles, et j&apos;automatise
+            des processus métier avec n8n et Odoo.
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
@@ -84,7 +84,7 @@ export default function Hero() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Mes réalisations
+                Mes projets sur GitHub
               </Link>
             </Button>
             <Button variant="outline" size="lg" className="cursor-pointer">

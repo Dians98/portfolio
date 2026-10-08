@@ -40,7 +40,7 @@ export default function Skills() {
             COMPÉTENCES
           </p>
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">
-            Ma Stack Technique
+            Ma stack technique
           </h2>
         </div>
 

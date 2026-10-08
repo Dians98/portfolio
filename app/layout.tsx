@@ -7,8 +7,9 @@ const sora = Sora({ subsets: ["latin"], variable: "--font-sora", display: "swap"
 const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
 
 export const metadata: Metadata = {
-  title: "Dian's Portfolio",
-  description: "Portfolio personnel",
+  title: "Diano ANDRIANTSALAMA, Software Engineer à Maurice",
+  description:
+    "Applications web et mobiles, automatisation avec n8n et configuration Odoo. Basé à Trou-aux-Biches, Maurice.",
 };
 
 export default function RootLayout({

@@ -47,9 +47,9 @@ export default function APropos() {
         <section id="apropos" className="py-6 md:py-12">
             <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-10">
                 <div className="flex flex-col gap-1 items-center md:items-start">
-                    <h1 className="text-primary font-medium"> A PROPOS</h1>
+                    <h1 className="text-primary font-medium">À PROPOS</h1>
                     <h1 className="text-foreground font-bold sm:text-3xl md:text-4xl lg:text-4xl">Qui suis-je ?</h1>
-                    <p className="my-4">Basé à Maurice. Je travaille avec React, Next.js, PHP &amp; Python, touche à l&apos;automatisation des processus et aussi à la configuration Odoo.</p>
+                    <p className="my-4">Basé à Maurice, je développe avec React, Next.js, PHP et Python. Je m&apos;occupe aussi d&apos;automatisation de processus avec n8n et de configuration Odoo.</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">

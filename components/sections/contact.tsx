@@ -44,13 +44,13 @@ export default function Contact() {
               Contact
             </p>
             <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mt-1">
-              Besoin d&apos;aide ? <span className="text-primary">Contactez-moi !</span>
+              Parlons de <span className="text-primary">votre projet</span>
             </h2>
           </div>
 
           <div className="flex items-start gap-3">
             <MapPin className="mt-0.5 h-5 w-5 text-primary shrink-0" />
-            <p className="font-medium">Trou-aux-Biches, Mauritius</p>
+            <p className="font-medium">Trou-aux-Biches, Maurice</p>
           </div>
 
           <div className="flex items-start gap-3">
@@ -136,14 +136,14 @@ export default function Contact() {
             {status === "success" && (
               <p className="flex items-center gap-2 text-sm text-emerald-600 dark:text-emerald-400">
                 <CheckCircle className="h-4 w-4" />
-                Message envoyé avec succès !
+                Message envoyé.
               </p>
             )}
 
             {status === "error" && (
               <p className="flex items-center gap-2 text-sm text-red-500">
                 <AlertCircle className="h-4 w-4" />
-                Une erreur est survenue. Réessayez plus tard.
+                L&apos;envoi a échoué. Réessayez, ou écrivez directement à diano.faniry@gmail.com.
               </p>
             )}
           </form>

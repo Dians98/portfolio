@@ -7,7 +7,7 @@ const badges = [
 const AerowAnalystContent = () => {
   return (
     <div className='space-y-4'>
-      <h3 className='text-xl font-semibold'>Analyste Developpeur</h3>
+      <h3 className='text-xl font-semibold'>Analyste Développeur</h3>
       <p className='text-muted-foreground text-sm'>AEROW ECM World · Stage</p>
       <ul className='text-muted-foreground list-inside list-disc space-y-2 text-sm'>
         <li>Développement d&apos;une application d&apos;e-administration avec K2 et SharePoint</li>
