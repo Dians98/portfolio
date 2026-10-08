@@ -1,7 +1,9 @@
 import { Resend } from "resend";
 
-// Destinataire des messages du formulaire de contact
-const CONTACT_TO = process.env.CONTACT_TO || "diano.faniry@gmail.com";
+// Destinataire des messages du formulaire de contact. Écrit sans point, comme l'adresse du compte Resend :
+// Gmail ignore les points (même boîte que diano.faniry@gmail.com), mais avec onboarding@resend.dev
+// Resend n'accepte que l'adresse exacte du compte.
+const CONTACT_TO = process.env.CONTACT_TO || "dianofaniry@gmail.com";
 // onboarding@resend.dev ne livre qu'à l'adresse du compte Resend : définir RESEND_FROM avec un domaine vérifié en production
 const CONTACT_FROM = process.env.RESEND_FROM || "Portfolio <onboarding@resend.dev>";
 
