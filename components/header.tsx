@@ -17,7 +17,9 @@ const navLinks = [
 ];
 
 export default function Header() {
-  const { theme, setTheme } = useTheme();
+  // resolvedTheme = thème réellement affiché ("system" résolu en "light"/"dark")
+  const { resolvedTheme, setTheme } = useTheme();
+  const isDark = resolvedTheme === "dark";
   const [open, setOpen] = useState(false);
   const mounted = useSyncExternalStore(
     () => () => { },
@@ -55,11 +57,12 @@ export default function Header() {
           <Button
             variant="ghost"
             size="icon"
-            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            onClick={() => setTheme(isDark ? "light" : "dark")}
             className="cursor-pointer"
+            aria-label={isDark ? "Passer en mode clair" : "Passer en mode sombre"}
           >
             {mounted ? (
-              theme === "dark" ? (
+              isDark ? (
                 <Sun className="size-5" />
               ) : (
                 <Moon className="size-5" />
