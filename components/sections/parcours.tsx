@@ -9,7 +9,7 @@ import AceemContent from '@/components/sections/parcours-content/aceem'
 
 const parcours: Release[] = [
   {
-    version: '2023 - Present',
+    version: "2023 - aujourd'hui",
     date: '',
     content: <AngeContent />,
   },
@@ -47,7 +47,7 @@ export default function Parcours() {
         <ChangelogContent
           releases={parcours}
           title="Parcours"
-          subtitle="Académique et Professionnelle"
+          subtitle="Académique et professionnel"
         />
       </div>
     </section>
