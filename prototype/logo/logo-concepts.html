@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Logo Dian's : pistes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* Couleurs reprises de app/globals.css (oklch converties en hex) */
+  :root {
+    --bg-l: #E8EBF3; --fg-l: #04060B; --teal-l: #00898B; --muted-l: #5A6475;
+    --bg-d: #04060B; --fg-d: #E8EBF3; --teal-d: #00989A; --muted-d: #778193;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { font-family: "Manrope", system-ui, sans-serif; background: #f1f2f6; color: var(--fg-l); padding: 32px; }
+  h1 { font-family: "Sora", sans-serif; font-size: 22px; margin-bottom: 4px; }
+  .intro { color: var(--muted-l); font-size: 14px; margin-bottom: 24px; max-width: 70ch; }
+  .concept { background: #fff; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+  .concept h2 { font-family: "Sora", sans-serif; font-size: 16px; }
+  .concept p { color: var(--muted-l); font-size: 13px; margin: 4px 0 16px; max-width: 80ch; }
+  .row { display: grid; grid-template-columns: 1fr 1fr 220px; gap: 12px; }
+  .panel { border-radius: 8px; padding: 18px 20px; display: flex; flex-direction: column; gap: 18px; }
+  .light { background: var(--bg-l); color: var(--fg-l); --teal: var(--teal-l); --bg: var(--bg-l); }
+  .dark { background: var(--bg-d); color: var(--fg-d); --teal: var(--teal-d); --bg: var(--bg-d); }
+  .label { font-size: 11px; opacity: .8; }
+  .header-bar { display: flex; align-items: center; justify-content: space-between; height: 44px; border-bottom: 1px solid color-mix(in srgb, currentColor 15%, transparent); }
+  .nav { font-size: 12px; opacity: .8; display: flex; gap: 14px; }
+  .icons { display: flex; align-items: end; gap: 14px; }
+
+  /* Mot-symbole commun */
+  .wm { font-family: "Sora", sans-serif; font-weight: 700; letter-spacing: -0.02em; line-height: 1; white-space: nowrap; }
+  .wm .ap { color: var(--teal); }
+  .s-head { font-size: 22px; }
+  .s-big { font-size: 64px; }
+
+  /* Actuel */
+  .current .wm { letter-spacing: -0.025em; }
+
+  /* A : curseur de terminal après le nom */
+  .caret { display: inline-block; width: .48em; height: .78em; background: var(--teal); margin-left: .08em; vertical-align: -0.02em; border-radius: .04em; }
+
+  /* B : monogramme D' en tuile */
+  /* texte foncé sur teal : ~4.8:1 en clair (le texte clair plafonnait à ~3.5:1) */
+  .tile { display: inline-grid; place-items: center; background: var(--teal); color: #04060B; font-family: "Sora", sans-serif; font-weight: 800; letter-spacing: -0.04em; border-radius: 22%; }
+  .lockup { display: inline-flex; align-items: center; gap: .35em; }
+
+  /* C : apostrophe dessinée (biseau) + graisse 800 */
+  .wm-c { font-weight: 800; letter-spacing: -0.035em; }
+  .wedge { display: inline-block; width: .2em; height: .42em; vertical-align: .44em; margin: 0 .03em 0 .05em; }
+  .wedge polygon { fill: var(--teal); }
+  .fav-c { display: inline-grid; place-items: center; border-radius: 50%; background: var(--fg-l); }
+  .dark .fav-c { background: var(--fg-d); }
+  .fav-c span { font-family: "Sora", sans-serif; font-weight: 800; color: var(--bg); line-height: 1; letter-spacing: -0.04em; }
+</style>
+</head>
+<body>
+  <h1>Logo « Dian's » : 3 pistes</h1>
+  <p class="intro">Toutes gardent Sora, le teal du site et l'apostrophe colorée. Pour chaque piste : le header en clair, le header en sombre, puis le favicon (onglet du navigateur, 32 et 16 px). La première ligne montre le logo actuel pour comparer.</p>
+
+  <!-- ACTUEL -->
+  <section class="concept current">
+    <h2>Actuel</h2>
+    <p>Sora 700, apostrophe en teal. Pas de favicon propre : c'est encore celui de Next.js.</p>
+    <div class="row">
+      <div class="panel light"><div class="header-bar"><span class="wm s-head">Dian<span class="ap">'</span>s</span><span class="nav">À propos · Services · Parcours</span></div><span class="wm s-big">Dian<span class="ap">'</span>s</span></div>
+      <div class="panel dark"><div class="header-bar"><span class="wm s-head">Dian<span class="ap">'</span>s</span><span class="nav">À propos · Services · Parcours</span></div><span class="wm s-big">Dian<span class="ap">'</span>s</span></div>
+      <div class="panel light"><span class="label">Favicon</span><span class="label">(aucun)</span></div>
+    </div>
+  </section>
+
+  <!-- A -->
+  <section class="concept">
+    <h2>A. Le curseur</h2>
+    <p>Le nom suivi d'un curseur de terminal en teal, le même que celui qui tape « Diano ANDRIANTSALAMA » dans le Hero. Changement minimal ; dans le header, le curseur peut clignoter une fois au chargement puis rester fixe. Favicon : le curseur seul.</p>
+    <div class="row">
+      <div class="panel light"><div class="header-bar"><span class="wm s-head">Dian<span class="ap">'</span>s<span class="caret"></span></span><span class="nav">À propos · Services · Parcours</span></div><span class="wm s-big">Dian<span class="ap">'</span>s<span class="caret"></span></span></div>
+      <div class="panel dark"><div class="header-bar"><span class="wm s-head">Dian<span class="ap">'</span>s<span class="caret"></span></span><span class="nav">À propos · Services · Parcours</span></div><span class="wm s-big">Dian<span class="ap">'</span>s<span class="caret"></span></span></div>
+      <div class="panel light"><span class="label">Favicon 32 / 16 px</span>
+        <div class="icons">
+          <span class="tile" style="width:32px;height:32px;background:var(--fg-l)"><span style="display:block;width:11px;height:17px;background:var(--teal-l);border-radius:1px"></span></span>
+          <span class="tile" style="width:16px;height:16px;background:var(--fg-l)"><span style="display:block;width:6px;height:9px;background:var(--teal-l)"></span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B -->
+  <section class="concept">
+    <h2>B. Le monogramme D'</h2>
+    <p>Une tuile teal avec « D' » à côté du nom. La tuile seule devient ton favicon et ton avatar (GitHub, LinkedIn, Codeur), ce qui relie tous tes profils au site.</p>
+    <div class="row">
+      <div class="panel light"><div class="header-bar"><span class="lockup wm s-head"><span class="tile" style="width:30px;height:30px;font-size:15px">D'</span><span>Dian<span class="ap">'</span>s</span></span><span class="nav">À propos · Services · Parcours</span></div><span class="lockup wm s-big"><span class="tile" style="width:84px;height:84px;font-size:42px">D'</span><span>Dian<span class="ap">'</span>s</span></span></div>
+      <div class="panel dark"><div class="header-bar"><span class="lockup wm s-head"><span class="tile" style="width:30px;height:30px;font-size:15px">D'</span><span>Dian<span class="ap">'</span>s</span></span><span class="nav">À propos · Services · Parcours</span></div><span class="lockup wm s-big"><span class="tile" style="width:84px;height:84px;font-size:42px">D'</span><span>Dian<span class="ap">'</span>s</span></span></div>
+      <div class="panel light"><span class="label">Favicon 32 / 16 px</span>
+        <div class="icons">
+          <span class="tile" style="width:32px;height:32px;font-size:16px;--bg:var(--bg-l)">D'</span>
+          <span class="tile" style="width:16px;height:16px;font-size:9px;--bg:var(--bg-l)">D'</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C -->
+  <section class="concept">
+    <h2>C. L'apostrophe dessinée</h2>
+    <p>Le mot plus serré et plus gras (Sora 800), et l'apostrophe redessinée en biseau teal, plus grande que celle de la police : elle devient la signature. Favicon : « D » avec le biseau.</p>
+    <div class="row">
+      <div class="panel light"><div class="header-bar"><span class="wm wm-c s-head">Dian<svg class="wedge" viewBox="0 0 20 42"><polygon points="7,0 20,0 11,42 0,42"/></svg>s</span><span class="nav">À propos · Services · Parcours</span></div><span class="wm wm-c s-big">Dian<svg class="wedge" viewBox="0 0 20 42"><polygon points="7,0 20,0 11,42 0,42"/></svg>s</span></div>
+      <div class="panel dark"><div class="header-bar"><span class="wm wm-c s-head">Dian<svg class="wedge" viewBox="0 0 20 42"><polygon points="7,0 20,0 11,42 0,42"/></svg>s</span><span class="nav">À propos · Services · Parcours</span></div><span class="wm wm-c s-big">Dian<svg class="wedge" viewBox="0 0 20 42"><polygon points="7,0 20,0 11,42 0,42"/></svg>s</span></div>
+      <div class="panel light"><span class="label">Favicon 32 / 16 px</span>
+        <div class="icons">
+          <span class="fav-c" style="width:32px;height:32px"><span class="wm wm-c" style="font-size:19px;color:var(--bg-l)">D<svg class="wedge" viewBox="0 0 20 42"><polygon points="7,0 20,0 11,42 0,42"/></svg></span></span>
+          <span class="fav-c" style="width:16px;height:16px"><span class="wm wm-c" style="font-size:10px;color:var(--bg-l)">D<svg class="wedge" viewBox="0 0 20 42"><polygon points="7,0 20,0 11,42 0,42"/></svg></span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
