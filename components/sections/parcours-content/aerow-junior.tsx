@@ -10,7 +10,7 @@ const AerowJuniorContent = () => {
       <h3 className='text-xl font-semibold'>Consultant Junior</h3>
       <p className='text-muted-foreground text-sm'>AEROW ECM World</p>
       <ul className='text-muted-foreground list-inside list-disc space-y-2 text-sm'>
-        <li>Développement d&apos;une application d&apos;assurance médicale avec K2</li>
+        <li>Développement d&apos;une application de gestion d&apos;assurance médicale avec K2</li>
         <li>Maintenance et évolution d&apos;une application de vente immobilière avec K2</li>
         <li>Développement d&apos;un flux de gestion de vente avec Workey</li>
       </ul>
