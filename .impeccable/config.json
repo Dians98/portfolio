@@ -20,6 +20,15 @@
         ],
         "createdAt": "2026-10-08T11:22:32.803Z",
         "reason": "Claude: planche de pistes de logo, aperçus volontaires du favicon à 16 px (glyphe 9-10 px dans une tuile 16 px), pas de l'UI du site"
+      },
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "prototype/hero/hero-terminal.html"
+        ],
+        "createdAt": "2026-10-08T17:31:09.811Z",
+        "reason": "Claude: maquette qui recopie le bouton primaire existant du site (blanc sur teal, 4.0:1) ; hors périmètre du changement, signalé à Diano"
       }
     ]
   }

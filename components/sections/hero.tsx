@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { useReducedMotion } from "motion/react";
+import TerminalBackdrop from "@/components/sections/terminal-backdrop";
 
 const BADGE_TEXT = "$ whoami";
 const FULL_NAME = "Diano ANDRIANTSALAMA";
@@ -49,10 +50,7 @@ export default function Hero() {
       id="hero"
       className="relative flex min-h-[calc(100dvh-4rem)] w-full items-center justify-center overflow-x-hidden py-16 md:py-0"
     >
-      <div
-        aria-hidden
-        className="terminal-grid terminal-grid-fade pointer-events-none absolute inset-0 -z-10 opacity-60 dark:opacity-40"
-      />
+      <TerminalBackdrop />
 
       <div className="flex w-full flex-col items-center gap-10 md:flex-row md:items-center">
         {/* --- GAUCHE : Texte --- */}

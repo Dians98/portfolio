@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hero terminal en fond</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Tokens copiés de app/globals.css */
+  :root {
+    --background: oklch(0.9401 0.011 269.55);
+    --foreground: oklch(0.1218 0.014 262.51);
+    --primary: oklch(0.55 0.14 195);
+    --primary-foreground: oklch(0.98 0.005 269.55);
+    --muted-foreground: oklch(0.5 0.03 262.51);
+    --border: oklch(0.8 0.02 262.51);
+    /* Fond terminal : encre très atténuée, jamais en concurrence avec le texte */
+    --log-ink: oklch(0.1218 0.014 262.51 / 0.2);
+    --log-prompt: oklch(0.55 0.14 195 / 0.45);
+    --log-cmd: oklch(0.1218 0.014 262.51 / 0.34);
+    --log-frame: oklch(0.1218 0.014 262.51 / 0.1);
+  }
+  .dark {
+    --background: oklch(0.1218 0.014 262.51);
+    --foreground: oklch(0.9401 0.011 269.55);
+    --primary: oklch(0.6 0.14 195);
+    --primary-foreground: oklch(0.9401 0.011 269.55);
+    --muted-foreground: oklch(0.6 0.03 262.51);
+    --border: oklch(0.25 0.02 262.51);
+    --log-ink: oklch(0.9401 0.011 269.55 / 0.13);
+    --log-prompt: oklch(0.72 0.13 195 / 0.42);
+    --log-cmd: oklch(0.9401 0.011 269.55 / 0.26);
+    --log-frame: oklch(0.9401 0.011 269.55 / 0.08);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 19px; font-family: Manrope, ui-sans-serif, system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  body { background: var(--background); color: var(--foreground); min-height: 100vh; overflow-x: hidden; }
+  ::selection { background: color-mix(in oklch, var(--primary) 35%, transparent); }
+  h1 { font-family: Sora, Manrope, sans-serif; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+  /* Header (copie du vrai) */
+  header { position: sticky; top: 0; z-index: 50; border-bottom: 1px solid var(--border); backdrop-filter: blur(8px); }
+  .bar { max-width: 64rem; margin: 0 auto; height: 4rem; padding: 0 1rem; display: flex; align-items: center; justify-content: space-between; }
+  .bar svg { height: 1.15rem; width: auto; color: var(--foreground); }
+  nav { display: flex; align-items: center; gap: 1.5rem; }
+  nav a { font-size: 0.875rem; color: var(--muted-foreground); text-decoration: none; }
+  nav .cta { background: var(--primary); color: var(--primary-foreground); padding: 0.4rem 0.75rem; border-radius: 0.5rem; font-weight: 500; }
+  .burger { display: none; width: 1.3rem; height: 1.3rem; color: var(--foreground); }
+
+  main { max-width: 64rem; margin: 0 auto; padding: 0 1rem; }
+
+  /* Hero : mêmes classes Tailwind que components/sections/hero.tsx (sm 640, md 768, lg 1024, xl 1280) */
+  .hero { position: relative; min-height: calc(100vh - 4rem); display: flex; align-items: center; justify-content: center; padding: 4rem 0; }
+  .row { display: flex; flex-direction: column; width: 100%; align-items: center; gap: 2.5rem; }
+  .text { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .badge { border-radius: 1rem; background: color-mix(in oklch, var(--primary) 10%, transparent); padding: 0.5rem 1rem; font-size: 0.75rem; color: oklch(0.7 0.02 262); }
+  h1 { font-size: 1.5rem; line-height: 2rem; font-weight: 700; }
+  h1 .last { color: var(--primary); }
+  .role { margin-top: 0.5rem; font-size: 1.25rem; font-weight: 700; }
+  .lead { margin-top: 1rem; max-width: 32rem; line-height: 1.625; color: var(--muted-foreground); }
+  .ctas { margin-top: 2rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+  .btn { display: inline-flex; align-items: center; height: 2.1rem; padding: 0 0.85rem; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 500; text-decoration: none; }
+  .btn.primary { background: var(--primary); color: var(--primary-foreground); }
+  .btn.outline { border: 1px solid var(--border); color: var(--foreground); background: var(--background); }
+  .photo { width: 16rem; height: 16rem; border-radius: 999px; padding: 0.25rem; flex-shrink: 0; }
+  .photo div { width: 100%; height: 100%; border-radius: 999px; border: 1px solid var(--border); background: var(--background); overflow: hidden; }
+  .photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  @media (min-width: 640px) { .role { font-size: 1.5rem; } .photo { width: 20rem; height: 20rem; } }
+  @media (min-width: 768px) {
+    .hero { padding: 0; }
+    .row { flex-direction: row; }
+    .text { align-items: flex-start; text-align: left; }
+    .ctas { justify-content: flex-start; }
+    h1 { font-size: 1.875rem; line-height: 2.25rem; }
+  }
+  @media (min-width: 1024px) { h1 { font-size: 3rem; line-height: 1; } }
+  @media (max-width: 767px) { nav { display: none; } .burger { display: block; } .bg { display: none; } /* pas de terminal sur mobile */ }
+
+  /* ---------- Couche de fond : session shell qui défile (inset 0 dans la section, comme le composant) ---------- */
+  .bg { position: absolute; inset: 0; z-index: -1; pointer-events: none; user-select: none; overflow: hidden; }
+  .log { position: absolute; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: flex-end;
+         line-height: 1.75; color: var(--log-ink); white-space: pre; }
+  .log .p { color: var(--log-prompt); }
+  .log .c { color: var(--log-cmd); }
+  .log .caret { display: inline-block; width: 0.55em; height: 1.1em; vertical-align: text-bottom; background: var(--log-prompt); animation: blink 1s steps(1) infinite; }
+  @keyframes blink { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0; } }
+
+  /* Mobile (< 768) : halo autour de la photo, qui est en bas du hero (centre à 4rem de padding + 8rem de rayon du bas) */
+  .log { left: 0; right: 0; padding-bottom: 3.2rem; font-size: 0.6rem;
+    -webkit-mask-image: radial-gradient(ellipse 50% 10rem at 50% calc(100% - 12rem), black 40%, transparent 100%);
+    mask-image: radial-gradient(ellipse 50% 10rem at 50% calc(100% - 12rem), black 40%, transparent 100%); }
+  @media (min-width: 640px) {
+    .log { -webkit-mask-image: radial-gradient(ellipse 50% 12rem at 50% calc(100% - 14rem), black 40%, transparent 100%);
+           mask-image: radial-gradient(ellipse 50% 12rem at 50% calc(100% - 14rem), black 40%, transparent 100%); }
+  }
+
+  /* Tablette (768 – 1279) : colonne étroite centrée sur la photo (centre à 10rem du bord droit), s'efface avant le texte */
+  @media (min-width: 768px) {
+    .log { left: auto; right: -3rem; width: 26rem; font-size: 0.62rem;
+      -webkit-mask-image: radial-gradient(ellipse 44% 34% at 50% 50%, black 35%, transparent 100%);
+      mask-image: radial-gradient(ellipse 44% 34% at 50% 50%, black 35%, transparent 100%); }
+  }
+
+  /* Desktop (≥ 1280) : centrée sur le creux entre la fin du nom et la photo (version en place) */
+  @media (min-width: 1280px) {
+    .log { left: calc(50% + 5.5rem); right: auto; width: 40rem; transform: translateX(-50%); font-size: 0.68rem;
+      -webkit-mask-image: radial-gradient(ellipse 65% 62% at 50% 52%, black 30%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 16%, black 84%, transparent 100%), radial-gradient(ellipse 62% 20% at 10% 59%, rgb(0 0 0 / 0.12) 55%, black 100%);
+      -webkit-mask-composite: source-in, source-in;
+      mask-image: radial-gradient(ellipse 65% 62% at 50% 52%, black 30%, transparent 100%), linear-gradient(to bottom, transparent 0%, black 16%, black 84%, transparent 100%), radial-gradient(ellipse 62% 20% at 10% 59%, rgb(0 0 0 / 0.12) 55%, black 100%);
+      mask-composite: intersect; }
+  }</style>
+</head>
+<body>
+<header>
+  <div class="bar">
+    <svg viewBox="7.4 14 297.9 87.8" role="img" aria-label="Dian's"><path fill="currentColor" d="M7.4 100.4L7.4 26.4L35.2 26.4Q45.1 26.4 52.55 29.2Q60 32 65 36.95Q70 41.9 72.5 48.4Q75 54.9 75 62.2L75 64.4Q75 71.1 72.5 77.55Q70 84 65 89.15Q60 94.3 52.55 97.35Q45.1 100.4 35.2 100.4ZM26 43.8L26 83L36 83Q40.7 83 44.45 81.65Q48.2 80.3 50.8 77.75Q53.4 75.2 54.8 71.55Q56.2 67.9 56.2 63.3Q56.2 58.5 54.8 54.85Q53.4 51.2 50.8 48.75Q48.2 46.3 44.45 45.05Q40.7 43.8 36 43.8ZM83.5 100L83.5 58L76.5 58L76.5 44.8L101.7 44.8L101.7 100ZM91 40.4Q86 40.4 83.65 37.85Q81.3 35.3 81.3 31.3Q81.3 27.3 83.65 24.75Q86 22.2 90.9 22.2Q95.9 22.2 98.2 24.75Q100.5 27.3 100.5 31.3Q100.5 35.3 98.2 37.85Q95.9 40.4 91 40.4ZM145 100L145 89.7Q144.4 91.6 143.5 93.2Q141.2 97.2 137.25 99.3Q133.3 101.4 127.5 101.4Q121.7 101.4 117.2 99.3Q112.7 97.2 110.15 93.25Q107.6 89.3 107.6 83.8Q107.6 77.6 110.9 73.75Q114.2 69.9 120 68.1Q125.8 66.3 133.3 66.3L142 66.3Q142 62.7 140.3 60.8Q138.5 59 134.5 59Q132.6 59 128.9 59.1Q125.2 59.2 121.1 59.4Q117 59.6 113.6 59.8L113.6 44.6Q116 44.4 119.3 44.2Q122.6 44 126.15 43.9Q129.7 43.8 132.7 43.8Q141.2 43.8 147.15 46.3Q153.1 48.8 156.25 53.8Q159.4 58.8 159.4 66.5L159.4 100ZM142 75.7L133.3 75.7Q129.6 75.7 127.6 77.55Q125.6 79.4 125.6 82.5Q125.6 85.5 127.6 87.35Q129.6 89.2 133.3 89.2Q135.7 89.2 137.55 88.35Q139.4 87.5 140.6 85.4Q141.8 83.3 142 79.6ZM168.1 100L168.1 44.8L182.5 44.8L182.5 59.2Q183 56.5 183.9 54.2Q186.1 48.6 190.45 45.8Q194.8 43 201 43L201.8 43Q211.2 43 216.35 49.25Q221.5 55.5 221.5 68.4L221.5 100L203.3 100L203.3 67.9Q203.3 64.1 201.05 61.65Q198.8 59.2 194.9 59.2Q191 59.2 188.65 61.65Q186.3 64.1 186.3 68.1L186.3 100ZM280.1 101.8Q268.1 101.8 261.2 96.85Q254.3 91.9 253.8 82.9L269.8 82.9Q270.2 85.4 272.9 87.2Q275.6 89 280.5 89Q284 89 286.55 87.95Q289.1 86.9 289.1 84.5Q289.1 82.4 287.1 81.05Q285.1 79.7 279.8 79.2L276 78.8Q265.4 77.7 260.4 73Q255.4 68.3 255.4 61.2Q255.4 55.1 258.4 51.15Q261.4 47.2 266.7 45.2Q272 43.2 278.8 43.2Q289.9 43.2 296.7 48.05Q303.5 52.9 303.9 62L287.9 62Q287.5 59.5 285.2 57.75Q282.9 56 278.6 56Q275.5 56 273.55 57.1Q271.6 58.2 271.6 60.2Q271.6 62.3 273.45 63.3Q275.3 64.3 279.4 64.8L283.2 65.2Q293.8 66.3 299.55 71.05Q305.3 75.8 305.3 83.5Q305.3 89.2 302.25 93.3Q299.2 97.4 293.55 99.6Q287.9 101.8 280.1 101.8Z"/><polygon fill="var(--primary)" points="235.6,14 248.6,14 239.6,56 228.6,56"/></svg>
+    <nav>
+      <a href="#">À propos</a><a href="#">Services</a><a href="#">Parcours</a><a href="#">Compétences</a><a class="cta" href="#">Me contacter</a>
+    </nav>
+    <svg class="burger" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="bg mono" aria-hidden="true" data-title="diano@maurice: ~"><div class="log" id="log"></div></div>
+    <div class="row">
+      <div class="text">
+        <span class="badge mono">$ whoami</span>
+        <h1>Diano <br><span class="last">ANDRIANTSALAMA</span></h1>
+        <p class="role">Software Engineer</p>
+        <p class="lead">Je développe des applications web et mobiles, et j'automatise des processus métier avec n8n et Odoo.</p>
+        <div class="ctas"><a class="btn primary" href="#">Mes projets sur GitHub</a><a class="btn outline" href="#">Me contacter</a></div>
+      </div>
+      <div class="photo"><div><img src="../../public/images/4k_teal_nobg.webp" alt="Diano ANDRIANTSALAMA"></div></div>
+    </div>
+  </section>
+</main>
+
+<script>
+  const q = new URLSearchParams(location.search);
+  if ((q.get("theme") || "dark") === "dark") document.documentElement.classList.add("dark");
+  document.body.classList.add("v" + (q.get("v") || "a"));
+  const reduce = q.has("static") || matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // Session de démonstration (décorative) : [répertoire, commande, ...lignes de sortie]
+  const SCRIPT = [
+    ["~/portfolio", "git pull origin main", "Already up to date."],
+    ["~/portfolio", "npm run build", "▲ Next.js 16.2.11", "  Creating an optimized production build ...", "✓ Compiled successfully", "✓ Generating static pages (6/6)"],
+    ["~/crm", "docker compose up -d", "[+] Running 3/3", " ✔ Container crm-db    Started", " ✔ Container crm-api   Started", " ✔ Container crm-web   Started"],
+    ["~/api", "uvicorn main:app --reload", "INFO:     Will watch for changes in these directories: ['/home/diano/api']", "INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)", "INFO:     Application startup complete."],
+    ["~", "n8n execute --id=relance-clients", "Execution was successful:", "  nodes: 7   items: 42   duration: 1.8s"],
+    ["~/odoo", "./odoo-bin -u website_sale -d boutique", "INFO boutique odoo.modules.loading: loading 64 modules...", "INFO boutique odoo.modules.loading: 64 modules loaded in 2.41s"],
+    ["~/portfolio", "git commit -m \"Hero : fond terminal\"", "[dev 8f3a2c1] Hero : fond terminal", " 2 files changed, 64 insertions(+), 12 deletions(-)"],
+    ["~", "ssh vps", "Welcome to Ubuntu 24.04 LTS (GNU/Linux x86_64)", "Last login: from 102.115.x.x"],
+  ];
+  const MAX_LINES = 40;
+  const log = document.getElementById("log");
+  const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  const prompt = (dir) => `<span class="p">diano@maurice:${esc(dir)}$</span> `;
+
+  function push(html) {
+    const line = document.createElement("div");
+    line.innerHTML = html;
+    log.appendChild(line);
+    while (log.children.length > MAX_LINES) log.firstChild.remove();
+    return line;
+  }
+
+  if (reduce) {
+    for (let i = 0; i < 3; i++) for (const [dir, cmd, ...out] of SCRIPT) {
+      push(prompt(dir) + `<span class="c">${esc(cmd)}</span>`);
+      out.forEach((o) => push(esc(o)));
+    }
+    push(prompt("~") + '<span class="caret"></span>');
+  } else {
+    (async () => {
+      // Pré-remplit l'écran pour ne pas démarrer sur un fond vide
+      for (const [dir, cmd, ...out] of SCRIPT.slice(0, 5)) {
+        push(prompt(dir) + `<span class="c">${esc(cmd)}</span>`);
+        out.forEach((o) => push(esc(o)));
+      }
+      for (let k = 5; ; k++) {
+        const [dir, cmd, ...out] = SCRIPT[k % SCRIPT.length];
+        const line = push(prompt(dir) + '<span class="c"></span><span class="caret"></span>');
+        const c = line.querySelector(".c");
+        await sleep(900);
+        for (let i = 1; i <= cmd.length; i++) { c.textContent = cmd.slice(0, i); await sleep(45 + Math.random() * 50); }
+        await sleep(350);
+        line.querySelector(".caret").remove();
+        for (const o of out) { push(esc(o)); await sleep(120 + Math.random() * 180); }
+        await sleep(1400);
+      }
+    })();
+  }
+</script>
+</body>
+</html>
