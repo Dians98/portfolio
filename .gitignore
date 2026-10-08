@@ -49,3 +49,17 @@ coverage/
 
 # Prisma generated client
 lib/generated/prisma/
+
+# Claude Code (réglages perso)
+.claude/settings.local.json
+
+# impeccable (binaire téléchargé, caches et sessions locales)
+**/skills/impeccable/scripts/bin/
+**/skills/impeccable/scripts/config.json
+**/.impeccable/hook.cache.json
+**/.impeccable/hook.pending.json
+.impeccable/live/
+.impeccable/history/
+.impeccable/config.local.json
+.impeccable/critique/*
+!.impeccable/critique/ignore.md
