@@ -1,4 +1,4 @@
-import { Code, ServerCog, Layers } from "lucide-react"
+import { Code, ServerCog, Database, Workflow, Boxes, Container } from "lucide-react"
 import type { LucideIcon } from "lucide-react"
 import {
   Card,
@@ -17,17 +17,32 @@ const skillCategories: SkillCategory[] = [
   {
     icon: Code,
     title: "Frontend",
-    skills: ["Next.js", "JavaScript", "Tailwind CSS"],
+    skills: ["React / React Native", "Next.js", "JavaScript / TypeScript", "HTML / CSS", "Tailwind CSS"],
   },
   {
     icon: ServerCog,
     title: "Backend",
-    skills: ["FastAPI", "PHP", "Node.js"],
+    skills: ["Python", "FastAPI", "Node.js", "CodeIgniter", "Laravel"],
   },
   {
-    icon: Layers,
-    title: "Autres",
-    skills: ["K2", "n8n", "Odoo"],
+    icon: Database,
+    title: "Bases de données",
+    skills: ["PostgreSQL", "MySQL"],
+  },
+  {
+    icon: Workflow,
+    title: "Automatisation et ERP",
+    skills: ["n8n", "Odoo (CRM, comptabilité, inventaire, ventes)"],
+  },
+  {
+    icon: Boxes,
+    title: "Low-code et workflow",
+    skills: ["K2", "SharePoint", "DocuSign"],
+  },
+  {
+    icon: Container,
+    title: "DevOps et outils",
+    skills: ["Docker", "Linux (VPS)", "Git", "GitHub"],
   },
 ]
 

@@ -49,7 +49,7 @@ export default function APropos() {
                 <div className="flex flex-col gap-1 items-center md:items-start">
                     <h1 className="text-primary font-medium">À PROPOS</h1>
                     <h1 className="text-foreground font-bold sm:text-3xl md:text-4xl lg:text-4xl">Qui suis-je ?</h1>
-                    <p className="my-4">Basé à Maurice, je développe avec React, Next.js, PHP et Python. Je m&apos;occupe aussi d&apos;automatisation de processus avec n8n et de configuration Odoo.</p>
+                    <p className="my-4">Software Engineer basé à Maurice, avec plus de 3 ans d&apos;expérience. J&apos;ai livré des projets web et mobiles de la conception à la mise en production. Je combine développement full-stack (React, Next.js, Python), automatisation de processus avec n8n et configuration Odoo pour transformer des tâches manuelles en outils fiables.</p>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ">
@@ -61,19 +61,19 @@ export default function APropos() {
 
 
                     <div className="flex flex-col items-center justify-center p-6 rounded-2xl border  text-center hover:border-primary/50 transition-colors">
-                        <span className="text-3xl lg:text-4xl font-bold text-primary"><StatNumber end={15} /></span>
-                        <span className="text-sm text-slate-400 mt-1">Projets</span>
+                        <span className="text-3xl lg:text-4xl font-bold text-primary"><StatNumber end={9} prefix="" /></span>
+                        <span className="text-sm text-slate-400 mt-1">Projets en entreprise</span>
                     </div>
 
 
                     <div className="flex flex-col items-center justify-center p-6 rounded-2xl border  text-center hover:border-primary/50 transition-colors">
-                        <span className="text-3xl lg:text-4xl font-bold text-primary"><StatNumber end={15} /></span>
+                        <span className="text-3xl lg:text-4xl font-bold text-primary"><StatNumber end={1} prefix="" /></span>
+                        <span className="text-sm text-slate-400 mt-1">Projet pour un client particulier</span>
+                    </div>
+
+                    <div className="flex flex-col items-center justify-center p-6 rounded-2xl border  text-center hover:border-primary/50 transition-colors">
+                        <span className="text-3xl lg:text-4xl font-bold text-primary"><StatNumber end={10} /></span>
                         <span className="text-sm text-slate-400 mt-1">Technologies</span>
-                    </div>
-
-                    <div className="flex flex-col items-center justify-center p-6 rounded-2xl border  text-center hover:border-primary/50 transition-colors">
-                        <span className="text-3xl lg:text-4xl font-bold text-primary"><StatNumber end={5} /></span>
-                        <span className="text-sm text-slate-400 mt-1">Clients</span>
                     </div>
 
 

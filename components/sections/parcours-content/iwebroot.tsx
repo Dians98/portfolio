@@ -11,7 +11,7 @@ const IwebrootContent = () => {
       <h3 className='text-xl font-semibold'>Développeur Web</h3>
       <p className='text-muted-foreground text-sm'>iWebRoot · Stage · Antananarivo, Madagascar</p>
       <ul className='text-muted-foreground list-inside list-disc space-y-2 text-sm'>
-        <li>Développement d&apos;une application de gestion de personnel avec Laravel</li>
+        <li>Développement de A à Z d&apos;une application de gestion du personnel avec Laravel et MySQL</li>
         <li>Projet réalisé dans le cadre de la Licence en Informatique</li>
       </ul>
       <div className='flex flex-wrap gap-2'>
