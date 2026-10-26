@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
 import { useReducedMotion } from "motion/react";
+import { Download } from "lucide-react";
 import TerminalBackdrop from "@/components/sections/terminal-backdrop";
 
 const BADGE_TEXT = "$ whoami";
@@ -76,14 +77,18 @@ export default function Hero() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <Button size="lg" className="cursor-pointer">
-              <Link
-                href="https://github.com/Dians98"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Mes projets sur GitHub
-              </Link>
+            <Button
+              size="lg"
+              nativeButton={false}
+              render={
+                <a
+                  href="/CV_Diano_Andriantsalama.pdf"
+                  download="CV_Diano_Andriantsalama.pdf"
+                />
+              }
+            >
+              <Download data-icon="inline-start" />
+              Télécharger mon CV
             </Button>
             <Button variant="outline" size="lg" className="cursor-pointer">
               <Link href="/#contact" rel="noopener noreferrer">
